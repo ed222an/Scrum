@@ -58,7 +58,7 @@ namespace Program
             Console.WriteLine(" ╚════════════════════════════════════════════════╝ ");
             Console.ResetColor();
             Console.WriteLine("\n - Arkiv -----------------------------------------\n");
-            Console.WriteLine(" 0. Avsluta.\n 1. Öppna textfil med medlemmar.\n 2. Spara medlem på textfil.\n");
+            Console.WriteLine(" 0. Avsluta.\n 1. Visa medlemslista.\n 2. Visa enskild medlem\n");
             Console.WriteLine(" - Redigera -------------------------------------- \n");
             Console.WriteLine(" 3. Ta bort medlem.\n");
             Console.WriteLine(" - Visa ------------------------------------------\n");
@@ -106,3 +106,4 @@ namespace Program
         }
     }
 }
+
