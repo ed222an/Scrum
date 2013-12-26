@@ -13,10 +13,10 @@ namespace Program
 
             // Exempellista med medlemmar.
             Member[] memberList = new Member[4];
-            memberList[0] = new Member("Clark", "Kent", 101);
-            memberList[1] = new Member("Bruce", "Wayne", 102);
-            memberList[2] = new Member("Hal", "Jordan", 103);
-            memberList[3] = new Member("Diana", "Prince", 104);
+            memberList[0] = new Member("Clark", "Kent", 11111, 101);
+            memberList[1] = new Member("Bruce", "Wayne", 22222, 102);
+            memberList[2] = new Member("Hal", "Jordan", 33333, 103);
+            memberList[3] = new Member("Diana", "Prince", 44444, 104);
 
             // Variabel för menyval.
             int option = 0;
