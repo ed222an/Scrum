@@ -186,54 +186,68 @@ namespace Program
             int choice = 0;
             Member chosenMember = null;
 
-            try
+            do
             {
-                // Ifall listan inte är tom körs övrig kod.
-                if (memberList == null || memberList.Count == 0)
+                try
                 {
-                    throw new ArgumentException();
+                    // Ifall listan inte är tom körs övrig kod.
+                    if (memberList == null || memberList.Count == 0)
+                    {
+                        throw new ArgumentException();
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine(" ╔═════════════════════════════════╗ ");
+                        Console.WriteLine(" ║           Välj medlem           ║ ");
+                        Console.WriteLine(" ╚═════════════════════════════════╝ \n");
+                        Console.ResetColor();
+                        for (int i = 0; i < memberList.Count; i++)
+                        {
+                            Console.WriteLine("  Medlem {0}: {1}", memberList[i].ID, memberList[i].FirstName);
+                        }
+                        Console.WriteLine(" ═════════════════════════════════════════════════ \n");
+                        Console.Write("  Ange medlemsnummer: ");
+
+                        // Ber användaren mata in menyval.
+                        choice = int.Parse(Console.ReadLine());
+                        Console.Clear();
+
+                        for (int i = 0; i < memberList.Count; i++)
+                        {
+                            if (memberList[i].ID.CompareTo(choice) == 0)
+                            {
+                                chosenMember = memberList[i];
+                                break;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        break;
+                    }
                 }
-                else
+                catch (ArgumentException) // Finns det inga medlemmar att spara visas detta felmeddelande.
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(" ╔═════════════════════════════════╗ ");
-                    Console.WriteLine(" ║           Välj medlem           ║ ");
-                    Console.WriteLine(" ╚═════════════════════════════════╝ \n");
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.WriteLine("\n ╔════════════════════════════════════════╗ ");
+                    Console.WriteLine(" ║   Det finns inga medlemmar att visa    ║ ");
+                    Console.WriteLine(" ╚════════════════════════════════════════╝ ");
                     Console.ResetColor();
-                    for (int i = 0; i < memberList.Count; i++)
-                    {
-                        Console.WriteLine("  Medlem {0}: {1}", memberList[i].ID, memberList[i].FirstName);
-                    }
-                    Console.WriteLine(" ═════════════════════════════════════════════════ \n");
-                    Console.Write("  Ange medlemsnummer: ");
-
-                    choice = int.Parse(Console.ReadLine());
-                    Console.Clear();
-
-                    for (int i = 0; i < memberList.Count; i++)
-                    {
-                        if (memberList[i].ID.CompareTo(choice) == 0)
-                        {
-                            chosenMember = memberList[i];
-                            break;
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
+                    break;
                 }
-            }
-            catch (ArgumentException) // Finns det inga medlemmar att spara visas detta felmeddelande.
-            {
-                Console.BackgroundColor = ConsoleColor.Yellow;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("\n ╔════════════════════════════════════════╗ ");
-                Console.WriteLine(" ║   Det finns inga medlemmar att visa    ║ ");
-                Console.WriteLine(" ╚════════════════════════════════════════╝ ");
-                Console.ResetColor();
-            }
+                catch (FormatException) // Matas fel format in visas detta felmeddelande.
+                {
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\n FEL! Ange endast siffror (utan mellanslag)!\n\n");
+                    Console.ResetColor();
+                } 
+            } while (true);
 
             return chosenMember;
         }
@@ -401,73 +415,69 @@ namespace Program
 
         private static void EditMember(List<Member> memberList) // Redigera en medlem.
         {
+
+            //Variabel för menyval.
+            int choice = 0;
+            Member chosenMember = null;
+
+            chosenMember = GetMember(memberList);
+
             do
             {
-                //Variabel för menyval.
-                int choice = 0;
-                Member chosenMember = null;
-
                 try
                 {
                     // Ifall listan inte är tom körs övrig kod.
                     if (memberList == null || memberList.Count == 0)
                     {
-                        throw new ArgumentException();
+                        throw new ArgumentNullException();
                     }
                     else
                     {
-                        chosenMember = GetMember(memberList);
+                        //Console.Clear();
+                        Console.BackgroundColor = ConsoleColor.DarkCyan;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine(" ╔══════════════════════════════════════════════╗ ");
+                        Console.WriteLine(" ║               Redigera medlem                ║ ");
+                        Console.WriteLine(" ╚══════════════════════════════════════════════╝ ");
+                        Console.ResetColor();
+                        Console.WriteLine("\n 1. Redigera medlem");
+                        Console.WriteLine(" -------------------------------------------------");
+                        Console.WriteLine("\n Medlemsnummer: {0}", chosenMember.ID);
+                        Console.WriteLine(" Namn: {0} {1}", chosenMember.FirstName, chosenMember.LastName);
+                        Console.WriteLine(" Telefonnummer: {0}", chosenMember.PhoneNumber);
+                        Console.WriteLine(" -------------------------------------------------");
+                        Console.WriteLine("\n 0. Avbryt");
+                        Console.WriteLine(" ═════════════════════════════════════════════════ \n");
+                        Console.Write(" Ange menyval [0-1]: ");
 
-                        if (chosenMember == null)
+                        // Ber användaren mata in ett menyval för vad som ska redigeras.
+                        choice = int.Parse(Console.ReadLine());
+
+                        if (choice < 0 || choice > 1)
                         {
-                            throw new Exception();
+                            throw new ArgumentOutOfRangeException();
                         }
-                        else
+                        // Användaren får mata in namn.
+                        if (choice == 1)
+                        {
+                            Console.Write("\n Nytt förnamn: ");
+                            chosenMember.FirstName = Console.ReadLine();
+                            Console.Write("\n Nytt efternamn: ");
+                            chosenMember.LastName = Console.ReadLine();
+                            Console.Write("\n Nytt telefonnummer: ");
+                            chosenMember.PhoneNumber = int.Parse(Console.ReadLine());
+
+                            if (chosenMember.PhoneNumber < 1 || chosenMember.PhoneNumber > 999999999)
+                            {
+                                throw new FormatException();
+                            }
+                            Message("Medlem redigerad");
+                            break;
+                        }
+                        if (choice == 0)
                         {
                             Console.Clear();
-                            Console.BackgroundColor = ConsoleColor.DarkCyan;
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine(" ╔══════════════════════════════════════════════╗ ");
-                            Console.WriteLine(" ║               Redigera medlem                ║ ");
-                            Console.WriteLine(" ╚══════════════════════════════════════════════╝ ");
-                            Console.ResetColor();
-                            Console.WriteLine("\n Medlemsnummer: {0}", chosenMember.ID);
-                            Console.WriteLine("\n 1.Namn: {0} {1}", chosenMember.FirstName, chosenMember.LastName);
-                            Console.WriteLine(" 2.Telefonnummer: {0}", chosenMember.PhoneNumber);
-                            Console.WriteLine("\n 3. Avbryt");
-                            Console.WriteLine(" ═════════════════════════════════════════════════ \n");
-                            Console.Write(" Ange menyval [1-3]: ");
-
-                            // Ber användaren mata in ett menyval för vad som ska redigeras.
-                            choice = int.Parse(Console.ReadLine());
-
-                            if (choice < 0 || choice > 3)
-                            {
-                                throw new ArgumentOutOfRangeException();
-                            }
-                            if (choice == 1)
-                            {
-                                Console.Write("\n Nytt förnamn: ");
-                                chosenMember.FirstName = Console.ReadLine();
-                                Console.Write("\n Nytt efternamn: ");
-                                chosenMember.LastName = Console.ReadLine();
-                            }
-                            if (choice == 2)
-                            {
-                                Console.Write("\n Nytt telefonnummer: ");
-                                chosenMember.PhoneNumber = int.Parse(Console.ReadLine());
-
-                                if (chosenMember.PhoneNumber < 1 || chosenMember.PhoneNumber > 999999999)
-                                {
-                                    throw new FormatException();
-                                }
-                                Message("Medlem redigerad");
-                            }
-                            if (choice == 3)
-                            {
-                                Console.Clear();
-                                break;
-                            }
+                            break;
                         }
                     }
                 }
@@ -479,8 +489,17 @@ namespace Program
                     Console.WriteLine("\n FEL! Ange endast siffror (utan mellanslag)!\n\n");
                     Console.ResetColor();
                 }
-                catch (ArgumentException) // Finns det inga medlemmar att spara visas detta felmeddelande.
+                catch (ArgumentOutOfRangeException) // Finns det inga medlemmar att spara visas detta felmeddelande.
                 {
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\n FEL! Ange något utav menyvalen.\n\n");
+                    Console.ResetColor();
+                }
+                catch (ArgumentNullException) // Finns det inga medlemmar att spara visas detta felmeddelande.
+                {
+                    Console.Clear();
                     Console.BackgroundColor = ConsoleColor.Yellow;
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.WriteLine("\n ╔════════════════════════════════════════╗ ");
