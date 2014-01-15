@@ -4,3 +4,9 @@ C:\Users\Emil\Desktop\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\bin\
 C:\Users\Emil\Desktop\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.csprojResolveAssemblyReference.cache
 C:\Users\Emil\Desktop\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.exe
 C:\Users\Emil\Desktop\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.pdb
+C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.exe.config
+C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.exe
+C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.pdb
+C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.exe
+C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.pdb
+C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.csprojResolveAssemblyReference.cache

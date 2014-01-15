@@ -572,6 +572,10 @@ namespace Program
                                 Console.ResetColor();
                             }
                         }
+                        else
+                        {
+                            throw new Exception();
+                        }
                     }
                 }
             }
@@ -582,6 +586,14 @@ namespace Program
                 Console.WriteLine("\n ╔════════════════════════════════════════╗ ");
                 Console.WriteLine(" ║  Det finns inga medlemmar att ta bort  ║ ");
                 Console.WriteLine(" ╚════════════════════════════════════════╝ ");
+                Console.ResetColor();
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("\n FEL! Du angav inte ett medlemsnummer!\n\n Du hamnar nu i huvudmenyn.\n");
                 Console.ResetColor();
             }
         }
