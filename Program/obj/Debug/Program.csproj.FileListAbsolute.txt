@@ -10,3 +10,9 @@ C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\ob
 C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.exe
 C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.pdb
 C:\Users\Emil\Documents\Skolarbeten\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.csprojResolveAssemblyReference.cache
+F:\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.exe.config
+F:\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.exe
+F:\Iterativ Mjukvaruutveckling\Scrum\Program\bin\Debug\Program.pdb
+F:\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.csprojResolveAssemblyReference.cache
+F:\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.exe
+F:\Iterativ Mjukvaruutveckling\Scrum\Program\obj\Debug\Program.pdb
